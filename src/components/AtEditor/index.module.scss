@@ -1,0 +1,21 @@
+
+
+.editor {
+    border: 2px solid yellow;
+
+    &:active {
+        border: 2px solid red;
+    }
+}
+
+.wrapper {
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 20px;
+    .userItem {
+        margin: 0 20px ;
+        border: 2px solid blue;
+        border-radius: 20px;
+        padding: 5px 10px;
+    }
+}

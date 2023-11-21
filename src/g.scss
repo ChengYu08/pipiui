@@ -1,0 +1,36 @@
+
+
+.mention-r {
+    position: relative;
+}
+
+.mention-ipt {
+   border: none;
+   outline: none;
+   color: #000;
+   background-color: rgb(206, 228, 229);
+   display: inline-block;
+   border-radius: 50px;
+   text-align: center;
+   width: 100px;
+}
+::-webkit-scrollbar { display: none; }
+
+.user-list {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    width: 200px;
+    overflow-y: scroll;
+    z-index: 5;
+    background-color: #ccc;
+    border-radius: 20px;
+}
+
+.user-item {
+    padding: 5px;
+    background-color: red;
+    margin: 5px ;
+    text-align: center;
+    border-radius: 10px;
+}
