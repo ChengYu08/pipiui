@@ -80,18 +80,6 @@ const users = [
 ]
 class MentionTool  {
 
-    state = {
-        curIpt: "sadsa",
-        position: {
-            x: 0,
-            y: 0
-        },
-        queryString: "",
-        showDialog: false,
-
-
-    }
-
     curListInfo = users
 
     curChooseInfo = {}
@@ -214,84 +202,9 @@ class MentionTool  {
         return this.renderElement;
     }
 
-    save(blockContent) {
-        console.log("blockContent",this.curChooseInfo,blockContent)
+    save() {
         return this.curChooseInfo;
     }
-
-    handleKeyDown = (e) => {
-        if (this.state.showDialog) {
-            if (
-                e.code === "ArrowUp" ||
-                e.code === "ArrowDown" ||
-                e.code === "Enter"
-            ) {
-                e.preventDefault();
-            }
-        }
-    };
-
-    // 获取光标位置
-    getCursorIndex = () => {
-        const selection = window.getSelection();
-        return selection?.focusOffset;
-    };
-
-    // 获取节点
-    getRangeNode = () => {
-        const selection = window.getSelection();
-        return selection?.focusNode;
-    };
-
-    getRangeRect = () => {
-        const selection = window.getSelection();
-        const range = selection?.getRangeAt(0);
-        const rect = range.getClientRects()[0];
-        const LINE_HEIGHT = 30;
-        return {
-            x: rect.x,
-            y: rect.y + LINE_HEIGHT
-        };
-    };
-
-    // 是否展示 @
-    showAt = () => {
-        console.log("showAt")
-        const node = this.getRangeNode();
-        if (!node || node.nodeType !== Node.TEXT_NODE) return false;
-        const content = node.textContent || "";
-        const regx = /@([^@\s]*)$/;
-        const match = regx.exec(content.slice(0, this.getCursorIndex()));
-        return match && match.length === 2;
-    };
-
-    // 获取 @ 用户
-    getAtUser = () => {
-        const content = getRangeNode()?.textContent || "";
-        const regx = /@([^@\s]*)$/;
-        const match = regx.exec(content.slice(0, getCursorIndex()));
-        if (match && match.length === 2) {
-            return match[1];
-        }
-        return undefined;
-    };
-
-    handleKeyUp = (e) => {
-        console.log("handleKeyUp")
-        if (this.showAt()) {
-            const position = this.getRangeRect();
-            const user = this.getAtUser();
-            this.setState({
-                position,
-                queryString: user || "",
-                showDialog: true
-            })
-        } else {
-            this.setState({
-                showDialog: false
-            })
-        }
-    };
 }
 
 let editorInstance = null;
